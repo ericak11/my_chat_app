@@ -1,17 +1,19 @@
-var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
-// var port = process.env.PORT || 3000;
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('../..')(server);
 var usernames = {};
+
+
+app.get('/', function(req, res){
+  res.sendfile('index.html');
+});
+
 
 // http.listen(port);
 var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
 var server_host = process.env.YOUR_HOST || '0.0.0.0';
 http.listen(server_port, server_host);
-
-app.get('/', function(req, res){
-  res.sendfile('index.html');
-});
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
