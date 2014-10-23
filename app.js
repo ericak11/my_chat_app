@@ -1,7 +1,8 @@
 
 var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
 // var port = process.env.PORT || 3000;
 var usernames = {};
 
@@ -14,7 +15,7 @@ app.get('/', function(req, res){
 // http.listen(port);
 var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
 var server_host = process.env.YOUR_HOST || '0.0.0.0';
-http.listen(server_port, server_host);
+server.listen(server_port, server_host);
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
