@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 var usernames = {};
 
 app.get('/', function(req, res){
-  res.sendfile('index.html');
+  res.sendFile('index.html');
 });
 
 http.listen(port);
