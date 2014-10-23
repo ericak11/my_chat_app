@@ -5,6 +5,10 @@
   "engines": {
     "node": "0.10.29"
   },
+  "repository": {
+  "type": "git",
+  "url": "git://github.com/ericak11/repository.git"
+  },
   "dependencies": {
     "express": "^4.9.8",
     "socket.io": "^1.1.0",
