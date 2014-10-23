@@ -1,13 +1,8 @@
-var WebSocketServer = require('ws').Server
-  , http = require('http')
-  , express = require('express')
-  , app = express()
-  , port = process.env.PORT || 5000;
 
-// var app = require('express')();
-// var http = require('http').createServer(app);
+var app = require('express')();
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-// // var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
 var usernames = {};
 
 
@@ -17,14 +12,9 @@ app.get('/', function(req, res){
 
 
 // http.listen(port);
-// var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
-// var server_host = process.env.YOUR_HOST || '0.0.0.0';
-// http.listen(server_port, server_host);
-var server = http.createServer(app);
-server.listen(port);
-
-
-var wss = new WebSocketServer({server: server});
+var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+http.listen(server_port, server_host);
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
