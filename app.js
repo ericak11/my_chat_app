@@ -27,9 +27,10 @@ io.on('connection', function(socket){
     socket.username = username;
     // add the client's username to the global list
     usernames[username] = username;
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-    });
+     io.emit('add user', username);
+    // socket.broadcast.emit('user joined', {
+    //   username: socket.username,
+    // });
   });
 });
 
