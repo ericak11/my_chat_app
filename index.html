@@ -44,9 +44,12 @@
       socket.on('add user', function(username){
          $('.messages').append($('<li>').text(username + " has joined the room").css({background: "rgb(190, 234, 248)"}));
        });
-
     }
   }
+
+socket.on('user left', function (username) {
+    $('.messages').append($('<li>').text(username + " has left the room").css({background: "rgb(243, 217, 217)"}));
+  });
 
 </script>
   </body>
